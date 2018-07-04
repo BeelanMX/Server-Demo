@@ -1,4 +1,5 @@
 const Node = require('../models').Node;
+const Downlink = require('../models').Downlink;
 
 module.exports = {
   create(req, res) {
@@ -11,7 +12,12 @@ module.exports = {
   },
   list(req, res) {
   return Node
-    .all()
+    .findAll({
+      include: [{
+        model: Downlink,
+        as: 'downlinks'
+      }],
+    })
     .then(nodes => res.status(200).send(nodes))
     .catch(error => res.status(400).send(error));
   },

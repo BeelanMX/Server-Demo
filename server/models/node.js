@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var Node = sequelize.define('Node', {
     devEUI: {
       type: DataTypes.STRING,
+      primaryKey: true,
       allowNull: false,
     }
   }, {});

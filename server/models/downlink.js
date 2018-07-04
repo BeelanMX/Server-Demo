@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Downlink.belongsTo(models.Node, {
      foreignKey: 'devEUI',
-     onDelete: 'CASCADE',
+     onDelete: 'CASCADE'
    });
   };
   return Downlink;

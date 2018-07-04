@@ -21,4 +21,22 @@ module.exports = {
     .then(nodes => res.status(200).send(nodes))
     .catch(error => res.status(400).send(error));
   },
+  retrieve(req, res) {
+    return Node
+      .findById(req.params.devEUI, {
+        include: [{
+          model: Downlink,
+          as: 'downlinks',
+        }],
+      })
+      .then(node => {
+        if (!node) {
+          return res.status(404).send({
+            message: 'Node Not Found',
+          });
+        }
+        return res.status(200).send(node);
+      })
+      .catch(error => res.status(400).send(error));
+  },
 };

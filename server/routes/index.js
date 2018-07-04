@@ -10,4 +10,5 @@ module.exports = (app) => {
   app.get('/api/nodos/:devEUI', Nodescontrolls.retrieve);
 
   app.post('/api/downlinks', DownlinkControlls.create);
+  app.get('/api/downlinks/:devEUI/last', DownlinkControlls.getlast);
 };

@@ -14,4 +14,18 @@ module.exports = {
       .then(downlink => res.status(201).send(downlink))
       .catch(error => res.status(400).send(error));
   },
+  getlast(req, res) {
+    return Downlink.findAndCountAll({
+      where: {
+        devEUI: req.params.devEUI
+     },
+     limit: req.params.limit || 1,
+     offset: req.params.offset || 0,
+      order: [
+        ['createdAt', 'DESC'],
+      ]
+    })
+    .then(downlink => res.status(201).send(downlink))
+    .catch(error => res.status(400).send(error));
+  }
 };

@@ -1,7 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Downlink = sequelize.define('Downlink', {
-    devEUI: DataTypes.STRING,
+    devEUI: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     deviceName: DataTypes.STRING,
     time: DataTypes.STRING,
     fCnt: DataTypes.INTEGER,

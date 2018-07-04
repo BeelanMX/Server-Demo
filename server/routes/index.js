@@ -6,4 +6,5 @@ module.exports = (app) => {
   }));
 
   app.post('/api/nodos', Nodescontrolls.create);
+  app.get('/api/nodos', Nodescontrolls.list);
 };
